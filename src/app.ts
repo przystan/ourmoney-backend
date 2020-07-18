@@ -22,6 +22,6 @@ app.get("/", homeController.index);
 /**
  * API examples routes.
  */
-app.get("/:id", apiController.getApi);
+app.get("/api", apiController.getApi);
 
 export default app;
