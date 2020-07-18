@@ -5,6 +5,6 @@ import { Request, Response } from "express";
  * Home page.
  */
 export const index = (req: Request, res: Response) => {
-    console.log("ss")
-    res.send("cxvcvcx")
+    res.send("HELLO WORLD");
+    console.log("heroku console log")
 };

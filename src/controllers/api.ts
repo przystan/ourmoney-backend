@@ -8,5 +8,5 @@ import { Response, Request, NextFunction } from "express";
  * List of API examples.
  */
 export const getApi = (req: Request, res: Response) => {
-   res.send("sss");
+   res.send(req.params.id);
 };
