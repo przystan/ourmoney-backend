@@ -4,6 +4,7 @@ import { Response, Request, NextFunction } from 'express';
 import DB from '../config/db';
 import Error from '../models/Error/Error.model';
 import { ErrorCode } from '../models/Error/ErrorEnumTypes';
+import * as ItemService from '../services/Item.service';
 
 /**
  * GET /api
@@ -14,18 +15,14 @@ export const getApi = (req: Request, res: Response) => {
 };
 
 export const addTestItem = async (req: Request, res: Response) => {
-    const db = DB.client.db('ourmoney');
-    const test = db.collection('test');
-    const result = await test.insertOne(req.body);
+    const result = await ItemService.addItem(req.body);
     res.status(200).json(result);
 };
 
 export const getTestItem = async (req: Request, res: Response) => {
-    const db = DB.client.db('ourmoney');
-    const test = db.collection('test');
-    console.log(req.params.id);
     const id = parseInt(req.params.id);
-    const result = await test.findOne({ item: id });
+    const result = await ItemService.getItem(id);
+
     if (result) {
         res.status(200).json(result);
     } else {

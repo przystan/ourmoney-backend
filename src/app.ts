@@ -22,8 +22,6 @@ const router = express.Router();
 
 dotenv.config({ path: '.env' });
 
-console.log(process.env.DB_CONNECTION_STRING);
-
 async function listDatabases(client: MongoClient) {
     const databasesList: any = await client.db().admin().listDatabases();
 
