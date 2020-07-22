@@ -14,11 +14,12 @@ import connectDB from './config/db';
 // Create Express server
 const app = express();
 
+const expressSwagger = require('express-swagger-generator')(app);
 // Express configuration
 app.set('port', process.env.PORT || 8080);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 const router = express.Router();
 
@@ -52,37 +53,32 @@ app.get('/api', apiController.getApi);
 //     })
 // );
 
-const expressSwagger = require('express-swagger-generator')(app);
-
 let options = {
     swaggerDefinition: {
         info: {
             description: 'This is a sample server',
             title: 'Swagger',
-            version: '1.0.0',
+            version: '1.0.0'
         },
         host: 'localhost:8080',
         basePath: '',
-        produces: [
-            "application/json",
-            "application/xml"
-        ],
+        produces: ['application/json', 'application/xml'],
         schemes: ['http', 'https'],
         securityDefinitions: {
             JWT: {
                 type: 'apiKey',
                 in: 'header',
                 name: 'Authorization',
-                description: "",
+                description: ''
             }
         }
     },
     basedir: __dirname, //app absolute path
     files: ['./routes/**/*.js'] //Path to the API handle folder
 };
-expressSwagger(options)
+expressSwagger(options);
 
-require("./routes/auth.route")(app);
+require('./routes/auth.route')(app);
 
 process.on('SIGINT', () => {
     console.log('exit');
