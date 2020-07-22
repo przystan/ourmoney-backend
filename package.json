@@ -1,10 +1,10 @@
 {
-    "name": "express-typescript-starter",
-    "version": "0.1.0",
-    "description": "A starting point for Node.js express apps with TypeScript",
+    "name": "our-money-backend",
+    "version": "0.0.1",
+    "description": "Our Money backend",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Microsoft/TypeScript-Node-Starter"
+        "url": "https://github.com/przystan/ourmoney-backend"
     },
     "author": "Bowden Kelly",
     "license": "MIT",
@@ -24,17 +24,23 @@
         "watch-ts": "tsc -w"
     },
     "dependencies": {
+        "@types/bcryptjs": "^2.4.2",
+        "@types/cors": "^2.8.6",
+        "@types/jsonwebtoken": "^8.5.0",
         "async": "^3.1.0",
+        "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "connect-mongo": "^3.0.0",
+        "cors": "^2.8.5",
         "dotenv": "^8.2.0",
         "errorhandler": "^1.5.1",
         "express": "^4.17.1",
         "express-flash": "0.0.2",
         "express-session": "^1.16.2",
         "express-validator": "^6.2.0",
+        "jsonwebtoken": "^8.5.1",
         "mongodb": "^3.5.9",
-        "mongoose": "^5.7.5",
+        "mongoose": "^5.9.25",
         "nodemailer": "^6.3.0",
         "swagger-jsdoc": "^4.0.0",
         "swagger-ui-express": "^4.1.4"
