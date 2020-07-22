@@ -9,7 +9,27 @@ module.exports = function (app: any) {
     //     next();
     // });
 
+    /**
+     * Register User
+     * @route POST /api/auth/signup
+     * @group /auth
+     * @param {string} email.body.required - email - eg: user@domain
+     * @param {string} username.body.required - username
+     * @param {string} password.body.required - user's password.
+     * @returns {object} 200 - An array of user info
+     * @returns {Error}  default - Unexpected error
+     */
     app.post('/api/auth/signup', [verifySignUp.checkDuplicateUsernameOrEmail], AuthController.signup);
 
-    app.post("/api/auth/signin", AuthController.signin);
+
+     /**
+     * Login user
+     * @route POST /api/auth/signin
+     * @group /auth
+     * @param {string} username.body.required - username
+     * @param {string} password.body.required - user's password.
+     * @returns {object} 200 - An array of user info
+     * @returns {Error}  default - Unexpected error
+     */
+    app.post('/api/auth/signin', AuthController.signin);
 };
