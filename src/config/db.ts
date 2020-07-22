@@ -1,24 +1,21 @@
-import { MongoClient } from 'mongodb';
+import { ConnectionOptions, connect } from "mongoose";
 
-class DBConnection {
-    public static client: MongoClient;
-    public static connect(callback: Function) {
-        console.log("CONNECT METHOD")
-        MongoClient.connect(process.env.DB_CONNECTION_STRING, (err, db) => {
-            this.client = db;
-            callback();
-        });
-    }
+const connectDB = async () => {
+  try {
+    const mongoURI: string = process.env.DB_CONNECTION_STRING;
+    const options: ConnectionOptions = {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    };
+    await connect(mongoURI, options);
+    console.log("MongoDB Connected...");
+  } catch (err) {
+    console.error(err.message);
+    // Exit process with failure
+    process.exit(1);
+  }
+};
 
-    public static close() {
-        this.client.close();
-    }
-}
-
-// module.exports = {
-//     connect,
-//     get,
-//     close
-// };
-
-export default DBConnection;
+export default connectDB;
