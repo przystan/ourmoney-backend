@@ -26,7 +26,7 @@ const router = express.Router();
 dotenv.config({ path: '.env' });
 
 //initDatabaseConnect
-connectDB();
+// connectDB();
 
 /**
  * Primary app routes.
